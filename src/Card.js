@@ -7,7 +7,12 @@ class Card extends React.Component {
     }
     //handle click
     handleClick = () => {
-        this.props.handleChoice(this.props.cardText)
+        if (!this.props.disable) {
+            this.props.handleChoice(this.props.cardText)
+        }
+    }
+    handleMatched = () => {
+        alert('Card already Matched')
     }
     render() {
         if (!this.props.flipped) {
@@ -16,7 +21,7 @@ class Card extends React.Component {
             )
         } else {
             return (
-                <div className='cardup'> {this.props.cardText.name} </div>);
+                <div className='cardup' onClick={this.handleMatched}> {this.props.cardText.name} </div>);
         }
     }
 }
