@@ -9,7 +9,6 @@ class Card extends React.Component {
     }
     //handle click
     handleClick = () => {
-        this.setState(state => ({ isFlipped: !state.isFlipped }))
         this.props.handleChoice(this.props.cardText)
     }
     render() {
