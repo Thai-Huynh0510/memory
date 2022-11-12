@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Card from './Card'
 
@@ -23,6 +23,23 @@ function App() {
     // handle choice for card 1 and card 2
     const handleChoice = (card) => {
         Card1 ? setCard2(card) : setCard2(card)
+    }
+    //compare
+    useEffect(() => {
+        if (Card1 && Card2) {
+            if (Card1.name === Card2.name) {
+                console.log('match')
+                resetCard()
+            } else {
+                console.log('unmatch')
+                resetCard()
+            }
+        }
+    }, [Card1, Card2])
+    //reset card
+    const resetCard = () => {
+        setCard1(null)
+        setCard2(null)
     }
     return (
         <div className="App">
