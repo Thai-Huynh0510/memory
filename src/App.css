@@ -13,3 +13,24 @@ button:hover {
         background: #c23866;
         color: #fff;
     }
+.Cards {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+.card {
+    height: 100px;
+    width: 75px;
+    background-color: black;
+    border-style: solid;
+    border-color: red;
+}
+
+.cardup {
+    height: 100px;
+    width: 75px;
+    background-color: red;
+    border-style: solid;
+    border-color: red;
+}
