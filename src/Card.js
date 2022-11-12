@@ -1,20 +1,18 @@
 import React from 'react';
 
+
 class Card extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isFlipped: false,
-        }
     }
     //handle click
     handleClick = () => {
         this.props.handleChoice(this.props.cardText)
     }
     render() {
-        if (!this.state.isFlipped) {
+        if (!this.props.flipped) {
             return (
-                <div className="card" onClick={this.handleClick}></div>
+                <div className="cardback" onClick={this.handleClick}></div>
             )
         } else {
             return (
