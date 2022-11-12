@@ -12,6 +12,7 @@ function App() {
     const doublecards = [...cardValues, ...cardValues]
     const [Card1, setCard1] = useState(null)
     const [Card2, setCard2] = useState(null)
+    const [disable, setdisable] = useState(false)
     // shuffel the cards 
     const shuffel = () => {
         const shuffed = doublecards.sort(() => Math.random() - 0.5).map((card) => ({ ...card, id: Math.random() }))
@@ -24,6 +25,7 @@ function App() {
     //compare
     useEffect(() => {
         if (Card1 && Card2) {
+            setdisable(true)
             if (Card1.name === Card2.name) {
                 setCards(prevCard => {
                     return prevCard.map(card => {
@@ -45,13 +47,15 @@ function App() {
     const resetCard = () => {
         setCard1(null)
         setCard2(null)
+        setdisable(false)
     }
     return (
         <div className="App">
             <button onClick={shuffel}> New Game </button>
             <div className="Cards">
                 {cards.map(cardValues => (<Card key={cardValues.id} cardText={cardValues} handleChoice={handleChoice}
-                    flipped={cardValues === Card1 || cardValues === Card2 || cardValues.status} />))}
+                    flipped={cardValues === Card1 || cardValues === Card2 || cardValues.status}
+                    disable={disable}/>))}
             </div>
         </div>
     );
